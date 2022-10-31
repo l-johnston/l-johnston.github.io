@@ -7,19 +7,21 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-      - uses: actions/checkout
-      - uses: actions/setup-python
+      - name: Checkout repo
+        uses: actions/checkout
+      - name: Set up Python
+        uses: actions/setup-python
         with:
           python-version: '3.10'
       - run: pip install -r requirements.txt
-      - run: make publish
+      - name: Generate site content
+        run: make publish
   upload:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Upload
-      - uses: actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact
         with:
           path: output
   deploy:
@@ -33,4 +35,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-      - uses: actions/deploy-pages
+        uses: actions/deploy-pages
