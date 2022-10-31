@@ -1,0 +1,8 @@
+black
+pylint
+pytest
+pelican[markdown]
+pymdown-extensions
+mdx-include
+invoke
+livereload

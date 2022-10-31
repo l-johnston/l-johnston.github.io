@@ -1,0 +1,36 @@
+on:
+  pull_request_target:
+    types:
+      - closed
+jobs:
+  build:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+      - uses: actions/checkout
+      - uses: actions/setup-python
+        with:
+          python-version: '3.10'
+      - run: pip install -r requirements.txt
+      - run: make publish
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload
+      - uses: actions/upload-pages-artifact
+        with:
+          path: output
+  deploy:
+    needs: upload
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: '${{steps.deployment.outputs.page_url}}'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+      - uses: actions/deploy-pages
