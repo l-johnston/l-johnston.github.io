@@ -16,16 +16,12 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Generate site content
         run: make publish
-  upload:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Upload
         uses: actions/upload-pages-artifact@v1.0.4
         with:
           path: output
   deploy:
-    needs: upload
+    needs: build
     permissions:
       pages: write
       id-token: write
