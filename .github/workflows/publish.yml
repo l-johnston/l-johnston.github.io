@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout
+        uses: actions/checkout@v2.5.0
       - name: Set up Python
-        uses: actions/setup-python
+        uses: actions/setup-python@4.3.0
         with:
           python-version: '3.10'
       - run: pip install -r requirements.txt
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload
-        uses: actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v1.0.4
         with:
           path: output
   deploy:
@@ -35,4 +35,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        uses: actions/deploy-pages
+        uses: actions/deploy-pages@v1.2.2
