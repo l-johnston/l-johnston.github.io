@@ -15,7 +15,7 @@ jobs:
           python-version: '3.10'
       - run: pip install -r requirements.txt
       - name: Generate site content
-        run: make publish
+        run: invoke build
       - name: Upload
         uses: actions/upload-pages-artifact@v1.0.4
         with:
