@@ -1,10 +1,9 @@
 AUTHOR = "Lee Johnston"
 SITENAME = "Lee's Corner"
-SITEURL = ""
+SITEURL = "https://l-johnston.github.io"
 PATH = "content"
-
+DISPLAY_CATEGORIES_ON_MENU = False
 TIMEZONE = "America/Chicago"
-
 DEFAULT_LANG = "en"
 
 # Feed generation is usually not desired when developing
@@ -23,4 +22,4 @@ SOCIAL = ()
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
